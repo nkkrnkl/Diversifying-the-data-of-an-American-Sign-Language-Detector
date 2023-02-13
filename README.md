@@ -16,12 +16,18 @@ The ASL detection algorithm is a classification problem, which predicts if an im
 •	changing the background color of the original dataset
 The model we trained was a Neural Network from PyTorch’s nn.Module class with a linear layer, which applies a linear transformation to the incoming data of the form:  y=xA^T+b. 
 The original dataset consisted of 80,000 images, which we split to 70% training, 20% validation, and 10% test set. We can observe the similarity of the normalized data below, same skin color, lighting and background.  
+
 ![image](https://user-images.githubusercontent.com/70606645/218503596-e3b4b7c1-9602-4cbd-97c8-9f171aaca3ae.png)
+
 Figure 1: Original Dataset
+
 Our hypothesis was that due to the dataset’s uniformity, which the model was trained and tested on, it would not generalize well to new and unseen data.
 #### Personal contribution
 ##### A.  Change the background color of the original dataset
 One of the approaches to increase the diversity of the data, was to change the background color of the original dataset. I achieved this by, firstly, transforming the images to grayscale, which was a necessary step to perform the Canny Edge Detection from OpenCV library. An “edge” is a discontinuity of brightness in an image, which allows us to find the boundaries of objects. This was an essential process in order to differentiate the foreground, hence the hand, from the background in an image. After that, I removed the noise of the images with Gaussian blur. Alongside the hand detection though, another prominent edge was identified, which existed in the background. This was not allowing to properly calculate the area of the hands, the contour. To resolve it I tried removing the straight lines at the top of each image with the Hough Lines Transform. This method accidently removed lines sections in the hands, which led me to dilate the lines to reconnect them once again. Lastly, I found the hand contours and changed the background.  
+
+![image](https://user-images.githubusercontent.com/70606645/218504274-cede4fa5-b65e-42ba-b6b2-eef69745d183.png)
+![image](https://user-images.githubusercontent.com/70606645/218504353-0d668f01-c188-4df5-b74c-ba8b4d484ca0.png)
 
 Figure 2: Edge Detection on the left and Calculation of the hand contour on the right 
 
