@@ -1,5 +1,5 @@
 # Diversifying the data of an American Sign Language Detector
-
+### by Niki Karanikola
 Last term, I worked on an ongoing research project at IBM Watson MIT lab with four other scholars from Breakthrough Tech AI. Our goal was to optimize an American Sign Language (ASL) detection algorithm translating image data to text. Designing such an algorithm successfully, will have a great impact on communication amongst people with hearing difficulties and the ones who are not conversant with ASL. But more importantly, a successful solution of such a model will help pave the way to a significant issue of Machine Learning algorithms. The problem of achieving high predictive performance after a model has been compressed to fit on a small memory card, like the one on our smartphones. A real-world application of an ASL detector would be developing a mobile application, which translates in “real-time” videos to text.
 In this article, I would like to share this learning journey with you. 
 #### Contents: 
