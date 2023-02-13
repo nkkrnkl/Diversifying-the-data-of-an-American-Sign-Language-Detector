@@ -26,13 +26,19 @@ Our hypothesis was that due to the dataset’s uniformity, which the model was t
 ##### A.  Change the background color of the original dataset
 One of the approaches to increase the diversity of the data, was to change the background color of the original dataset. I achieved this by, firstly, transforming the images to grayscale, which was a necessary step to perform the Canny Edge Detection from OpenCV library. An “edge” is a discontinuity of brightness in an image, which allows us to find the boundaries of objects. This was an essential process in order to differentiate the foreground, hence the hand, from the background in an image. After that, I removed the noise of the images with Gaussian blur. Alongside the hand detection though, another prominent edge was identified, which existed in the background. This was not allowing to properly calculate the area of the hands, the contour. To resolve it I tried removing the straight lines at the top of each image with the Hough Lines Transform. This method accidently removed lines sections in the hands, which led me to dilate the lines to reconnect them once again. Lastly, I found the hand contours and changed the background.  
 
-![image](https://user-images.githubusercontent.com/70606645/218504274-cede4fa5-b65e-42ba-b6b2-eef69745d183.png)![image](https://user-images.githubusercontent.com/70606645/218504353-0d668f01-c188-4df5-b74c-ba8b4d484ca0.png)
+![image](https://user-images.githubusercontent.com/70606645/218504274-cede4fa5-b65e-42ba-b6b2-eef69745d183.png)
+Figure 2: Edge Detection on the left  
 
-Figure 2: Edge Detection on the left and Calculation of the hand contour on the right 
+![image](https://user-images.githubusercontent.com/70606645/218504353-0d668f01-c188-4df5-b74c-ba8b4d484ca0.png)
+Figure 3: Hand contour on the right 
 
 The variability and noise of the images did not allow all hand gestures to be correctly captured by the Canny Edge Detector, which led to many failed attempts, like the left image below. For this reason, I was not able to create a complete dataset of all letters in the ASL alphabet. Consequently, we settled on enlarging the data diversity with the addition of new datasets from Kaggle and taking our own pictures.
+ 
+![image](https://user-images.githubusercontent.com/70606645/218504916-5b9fdc26-8f7a-4fee-9b03-62f875db50a6.png)
+Figure 4: Successful attempt to change the background color 
 
-Figure 3: Successful attempt to change the background color on the right and failed one on the left
+![image](https://user-images.githubusercontent.com/70606645/218504979-c5f4867d-4bb9-48cf-9c84-c041aff20c3e.png)
+Figure 5: Failed attempt to change the background color 
 
 ##### B.  Formation of experiment to test our hypothesis 
 To prove the aforementioned hypothesis, I designed three rounds of experiments. First, training and testing the model on the original data. Secondly, training the model on the original data, but testing it on a new dataset. Lastly, training and testing on a mixed dataset, which combined the original and the new datasets. To better understand the results of each experiment, we utilized multiple visualizations, such as bar graphs, and heat graphs.    
@@ -40,7 +46,8 @@ To prove the aforementioned hypothesis, I designed three rounds of experiments. 
 #### Experiments’ Results
 We evaluated the model’s performance after 40 epochs with the accuracy metric, which is calculated by dividing the number of correct predictions by the total number of predictions. The accuracy metric’s accessibility was the reason for choosing it. In the first round of experiments, model trained and tested on the original dataset, the performance was 100%. However, the accuracy score on the second experiment, model trained on original and tested on new dataset, dropped to 2%. The difference in these two experiments signified that our hypothesis about the model overfitting the data was correct.  
 
-Figure 4: Results of three experiments
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/70606645/218505167-9aec380b-8363-4dd6-8f6a-dc742d675e15.png">
+Figure 6: Results of three experiments
 
 On the third and last experiment, model trained and tested on mixed dataset, the accuracy increased back to 100%. This result indicates the success of increasing the dataset’s diversity, which resembles the real world a little bit more than before. 
 
